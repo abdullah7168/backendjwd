@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard-home');
 });
+Route::get('/degree-verf-request', function () {
+    return view('dashboard-degreeverification');
+});
+
+
