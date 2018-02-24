@@ -27,16 +27,48 @@
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> <span>Students</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="{{url('student/register')}}"><i class="fa fa-circle-o"></i> Register Student</a></li>
+            <li><a href="{{url('students')}}"><i class="fa fa-circle-o"></i> Students</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Cources</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('cource/register')}}"><i class="fa fa-circle-o"></i> Register new Cource</a></li>
+            <li><a href="{{url('cources')}}"><i class="fa fa-circle-o"></i> Cources</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Departments</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('department/register')}}"><i class="fa fa-circle-o"></i> Register new Department</a></li>
+            <li><a href="{{url('departments')}}"><i class="fa fa-circle-o"></i> Departments</a></li>
+          </ul>
+        </li>
+        <li> 
+          <a href="{{url('/result/announce')}}">
+            <i class="fa fa-dashboard"></i> <span>Announce Result</span>
+          </a>
+        </li>
+
       </ul>
     </section>
     <!-- /.sidebar -->
