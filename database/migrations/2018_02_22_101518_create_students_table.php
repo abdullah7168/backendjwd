@@ -23,6 +23,8 @@ class CreateStudentsTable extends Migration
             $table->string('cnic');
             $table->string('address');
             $table->string('email');
+            $table->string('dpt_abbr');
+            $table->string('shift');
             $table->string('username')->unique();
             $table->string('password');
             $table->rememberToken();

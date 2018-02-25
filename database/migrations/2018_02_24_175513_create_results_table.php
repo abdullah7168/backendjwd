@@ -17,11 +17,11 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cource_id');
+            $table->string('cource_codes');
             $table->string('student_id');
             $table->string('pass_marks');
             $table->string('obt_marks');
-            $table->string('gpa');
+            $table->string('cgpa');
             $table->string('section');
             $table->string('semester');
             $table->string('type'); // regular or supply

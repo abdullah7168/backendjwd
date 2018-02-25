@@ -63,10 +63,17 @@
             <li><a href="{{url('departments')}}"><i class="fa fa-circle-o"></i> Departments</a></li>
           </ul>
         </li>
-        <li> 
-          <a href="{{url('/result/announce')}}">
-            <i class="fa fa-dashboard"></i> <span>Announce Result</span>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Semester Results</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('results')}}"><i class="fa fa-circle-o"></i> View all Results</a></li>
+            <li><a href="{{url('result/announce')}}"><i class="fa fa-circle-o"></i> Announce Result</a></li>
+          </ul>
         </li>
 
       </ul>

@@ -15,10 +15,12 @@ class CreateEnrollmentsTable extends Migration
     {
         Schema::create('enrollments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cource_id');
+            $table->string('cource_codes');
             $table->string('student_id');
-            $table->string('department_id');
+            $table->string('dpt_abbr');
+            $table->string('degree');
             $table->string('fee');
+            $table->string('fee_status');
             $table->string('semester');
             $table->string('type'); // regular or supply
             $table->string('section');

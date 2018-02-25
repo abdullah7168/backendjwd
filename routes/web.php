@@ -13,17 +13,17 @@ header('Access-Control-Allow-Headers: Content-Type, x-xsrf-token');
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard-home');
-});
-Route::get('/degree-verf-request', function () {
-    return view('dashboard-degreeverification');
-});
-
+Route::get('/', 'DegreevarifyController@showAllRequests');
+Route::get('/degree-verf-request/{id}', 'DegreevarifyController@processRequest');
+Route::post('process/request','DegreevarifyController@postRequest');
 
 Route::get('/students', 'StudentController@allStudents');
 Route::get('/student/register', 'StudentController@registerStudentView');
 Route::post('/student/register', 'StudentController@registerStudent');
+
+Route::get('/enrollments', 'EnrollmentController@allEnrollments');
+Route::get('/enrollment/register', 'EnrollmentController@registerEnrollmentView');
+Route::post('/enrollment/register', 'EnrollmentController@registerEnrollment');
 
 
 Route::get('/cources', 'CourceController@allCources');
@@ -41,6 +41,11 @@ Route::post('/department/register', 'DepartmentController@registerDepartment');
 Route::get('/results', 'ResultController@allResults');
 Route::get('/result/announce', 'ResultController@announceResultView');
 Route::post('/result/announce', 'ResultController@announceResult');
+
+
+Route::get('/cource-results', 'CourceresultController@allResults');
+Route::get('/cource-result/announce', 'CourceresultController@announceResultView');
+Route::post('/cource-result/announce', 'CourceresultController@announceResult');
 
 
 
