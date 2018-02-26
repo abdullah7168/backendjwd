@@ -7,6 +7,12 @@ use App\Student;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use App\Enrollment;
+use App\Dgvreqs;
+
+
+
 class StudentController extends Controller
 {
     public function index(){
@@ -15,9 +21,8 @@ class StudentController extends Controller
     public function apiLogin(Request $request){
 
         $student = DB::table('students')->where('username', $request->misid)->first();
-        
         if(!empty($student)){
-            if($student->password == '$2y$10$8KcIURFEYtGB82rLMWWW5OBd8lV7tiEH5A8JBEKhfVhJVnt9e1dPS'){
+            if(Hash::check($request->password,$student->password)){
                 return response()->json(array(
                     'status_code ' => 1,
                     'request' => $request,
@@ -33,7 +38,7 @@ class StudentController extends Controller
         return response()->json(array(
             'status_code ' => 0,
             'request' => $request,
-            'responce' => 'incorrect username and password'
+            'responce' => 'No user with this id'
         ));
     }
 
@@ -55,4 +60,31 @@ class StudentController extends Controller
         $student->save();
         return redirect::to('/');
     }
+
+
+
+
+    /**
+     * Api Request for
+     * Degree Varification of
+     * a Student, Request will be stored
+     * and made available to the admin
+     * as a notification
+     */
+
+     public function initiateRequest(Request $request){
+
+        $verification_request = new Dgvreqs;
+        $verification_request->student_id = $request->student_id;
+        $verification_request->request_status = 'pending';
+        $verification_request->notes = '';
+        $verification_request->save();
+
+        return response()->json(array(
+            'status_code ' => 1,
+            'request' => $request,
+            'message' => 'your request is successfully recieved and will be process shortly'
+        ));
+
+     }
 }

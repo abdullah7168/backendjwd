@@ -13,5 +13,10 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         '/api/student/login',
+        '/api/degree-verification',
+        '/watch/degree-vf-reqs',
+        '/watch/degree-vf-reply',
+        'get-reply-for/',
+        '/api/change/notify'
     ];
 }

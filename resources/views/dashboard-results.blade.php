@@ -64,16 +64,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    @foreach ($results as $result)
+                                @foreach ($results as $result)
+                                    <tr>
                                         <td><a href="{{url('/result/student/'.$result->student_id)}}">{{$result->name}}</a></td>
                                         <td>{{$result->cgpa}}</td>
                                         <td>{{$result->semester}}</td>
                                         <td>{{$result->section}}</td>
                                         <td>{{$result->type}}</td>
                                         <td>{{$result->shift}}</td>
+                                    </tr>
                                     @endforeach
-                                </tr>
                             </tbody>
                         </table>
                     </div>

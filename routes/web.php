@@ -49,6 +49,16 @@ Route::post('/cource-result/announce', 'CourceresultController@announceResult');
 
 
 
+/**
+ * Notification generation
+ * is handled by these routes
+ * 
+ */
+Route::post('/watch/degree-vf-reqs','DegreevarifyController@ReqWatcher');
+Route::post('/watch/degree-vf-reply','DegreevarifyController@ReplyWatcher');
+
+Route::post('get-reply-for','DegreevarifyController@getReply');
+Route::post('api/change/notify','DegreevarifyController@editReply');
 
 
 
@@ -60,3 +70,4 @@ Route::post('/cource-result/announce', 'CourceresultController@announceResult');
 
 
 Route::post('/api/student/login','StudentController@apiLogin');
+Route::post('/api/degree-verification','StudentController@initiateRequest');

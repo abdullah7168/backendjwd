@@ -24,6 +24,7 @@ class DegreevarifyController extends Controller
         $verification_request = new Dgvreqs;
         $verification_request->student_id = $request->student_id;
         $verification_request->request_status = $request->request_status;
+        $verification_request->seen = 1;
         $verification_request->notes = $request->notes;
         $verification_request->save();
 
@@ -36,5 +37,42 @@ class DegreevarifyController extends Controller
                     ->select('Dgvreqs.*', 'students.name')
                     ->get();
         return view('dashboard-home',compact('vrfrequests'));
+    }
+
+    public function ReqWatcher(){
+        $vrfrequests = Dgvreqs::where('seen','=',0)->first();
+        return response()->json(array(
+            'notify' => $vrfrequests
+        ));
+    }
+
+    public function ReplyWatcher(Request $request){
+        $reply = Dgvreqs::where([
+                            ['student_id', '=', $request->student_id],
+                            ['seen', '=', '1']
+                        ])->first();
+        $status = 0;
+
+        if($reply->replied != 1)
+            $status = 1;
+        return response()->json(array(
+            'status' => $status,
+            'notify' => $reply,
+        ));
+    }
+
+    public function getReply(Request $request){
+        $reply = Dgvreqs::findOrFail($request->id)->first();
+        return response()->json(array(
+            'notify' => $reply,
+        ));
+    }
+
+    public function editReply(Request $request){
+        $notify = Dgvreqs::findOrFail($request->id)->first();
+        $notify->replied = '1';
+        return response()->json(array(
+            'message' => 'notification altered',
+        ));
     }
 }
